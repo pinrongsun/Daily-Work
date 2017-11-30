@@ -1,10 +1,12 @@
-let start=moment('2017-11-10').toDate();
-let end=moment('2017-11-23').endOf('days').toDate();
-//fluent query example
-//db.user.where('age').gte(21).lte(65).select('name age -_id').sort("-age name")
-//       .getShellScript() //Return the MongoDB query produced by the Fluent Query Builder
+let start=moment('2017-11-10').startOf('days').toDate();
+let st=moment('2017-11-24').startOf('days').toDate();
+let end=moment('2017-11-26').endOf('days').toDate();
+
+
+//cashier1 7NqHQXGjWAnKeXed5
+//cashier2 yRT3PeBjPmgyyHB9h
 db.createView('vw_paymentCashier2Till23', 'wb_payment',[
-                {$match: {date:{$gt:start,$lt:end},createdBy:"7NqHQXGjWAnKeXed5"}},
+                {$match: {date:{$gt:st,$lt:end},createdBy:"yRT3PeBjPmgyyHB9h"}},
                 {
                     $lookup: {
                         from: 'wb_meterReadingJournalDetails',
