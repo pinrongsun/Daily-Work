@@ -1,4 +1,10 @@
- [
+
+
+let start=moment('2017-11-10').toDate();
+let end=moment('2017-11-30').toDate();
+
+let barcodes=
+[
         {
             "barcode": "171108620",
             "dpc": "03031633401",
@@ -2255,3 +2261,8 @@
             "name": "ញ៉ែម ហ៊ាន"
         }
     ]
+ barcodes.forEach(function(bar){
+   let customer=db.wb_customer.findOne({dpc:bar.dpc});
+ db.wb_meterReadingJournalDetails.update({customerId:customer._id,newReadingDate:{$gt:start,$lte:end}},{$set:{subBarcode:bar.barcode}});
+ });
+
