@@ -1,0 +1,13 @@
+170902664
+170902512
+170902809
+170904014
+170902769
+170902270
+170901895
+db.wb_transactionDetail.remove({customerId:'BB010531'})
+db.wb_transactionDetail.remove({customerId:'BB010426'})
+db.wb_transaction.remove({customerId:'BB010426'})
+db.wb_transaction.remove({customerId:'BB010531'})
+db.wb_meterReadingJournalDetails.find({barcode:'170902664'},{grandTotal:1,balance:1})
+db.wb_meterReadingJournalDetails.find({barcode:'170902769'},{grandTotal:1,balance:1})
