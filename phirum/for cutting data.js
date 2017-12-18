@@ -17,6 +17,7 @@ let customers=db.wb_customer.aggregate([{
     }
 }])
 let customerIds=[];
+db.wb_customer.remove({_id:{$in:customerIds}});
 db.wb_meterReadingJournalDetails.remove({customerId:{$in:customerIds}});
 db.wb_payment.remove({customerId:{$in:customerIds}});
 db.wb_transaction.remove({customerId:{$in:customerIds}})
