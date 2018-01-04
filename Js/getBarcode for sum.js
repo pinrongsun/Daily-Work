@@ -5,7 +5,8 @@ let end=moment('2017-11-26').endOf('days').toDate();
 
 //cashier1 7NqHQXGjWAnKeXed5
 //cashier2 yRT3PeBjPmgyyHB9h
-db.createView('vw_paymentCashier1Till', 'wb_payment',[
+db.createView('vw_paymentCashier1Till', 'wb_payment',
+    [
                 {$match: {date:{$gt:st,$lt:end},createdBy:"yRT3PeBjPmgyyHB9h"}},
                 {
                     $lookup: {
