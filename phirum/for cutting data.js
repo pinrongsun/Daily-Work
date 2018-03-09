@@ -3,10 +3,12 @@ let customers=db.wb_customer.aggregate([{
      $project: {
                     street: { $substr: ["$streetNo", 3, -1] },
                     customerId:'$_id',
-                    name:1
+                    name:1,
+                    block:1,
                 }
 },{
-    $match:{street:{$gt: "480"}}
+   // $match:{street:{$gt: "299"}}
+    $match:{street:{$gt: "480"},block:"0203022"}
 },
 {
     $group:{
@@ -15,8 +17,8 @@ let customers=db.wb_customer.aggregate([{
             $push:'$customerId'
         }
     }
-}])
-let customerIds=[];
+}]);
+let customerIds=customers[0].data;
 db.wb_customer.remove({_id:{$in:customerIds}});
 db.wb_meterReadingJournalDetails.remove({customerId:{$in:customerIds}});
 db.wb_payment.remove({customerId:{$in:customerIds}});
